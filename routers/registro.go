@@ -8,7 +8,7 @@ import (
 	"github.com/superterro666/twittor/models"
 )
 
-/* Registro usuarios*/
+// Registro :  usuarios
 func Registro(w http.ResponseWriter, r *http.Request) {
 	var t models.Usuario
 	err := json.NewDecoder(r.Body).Decode(&t)
@@ -33,9 +33,9 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, status, err := bd.insertoRegistro(t)
+	_, status, err := bd.InsertRegistro(t)
 	if err != nil {
-		http.Error(w, "Ocurrio un error inesperado"+err, 400)
+		http.Error(w, "Ocurrio un error inesperado"+err.Error(), 400)
 		return
 	}
 
