@@ -22,6 +22,8 @@ func BuscoPerfil(ID string) (models.Usuario, error) {
 
 	objID, _ := primitive.ObjectIDFromHex(ID)
 
+	fmt.Println(objID)
+
 	condicion := bson.M{
 		"_id": objID,
 	}

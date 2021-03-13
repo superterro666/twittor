@@ -2,6 +2,7 @@ package routers
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -29,10 +30,13 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 
 	if err == nil {
 		_, encontrado, _ := bd.ChequeoYaExisteUsuario(claims.Email)
+
 		if encontrado == true {
 			Email = claims.Email
 			IDUsuario = claims.ID.Hex()
 		}
+
+		fmt.Println(IDUsuario)
 		return claims, encontrado, IDUsuario, nil
 	}
 
